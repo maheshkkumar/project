@@ -2,13 +2,20 @@ import os
 from flask import Flask, render_template
 from flask import request, redirect, url_for
 from werkzeug import secure_filename
+# import cv2
+import indicoio
 
+# Indico.io client secret
+CLIENT_SECRET = "#"
+
+#  Image upload folder
 UPLOAD_FOLDER = 'uploads'
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg', 'gif'])
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
+#  Root path for image upload
 @app.route('/', methods=['GET', 'POST'])
 def upload_file():
     if request.method == 'POST':
@@ -16,7 +23,7 @@ def upload_file():
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            return redirect(url_for('uploaded_file', filename=filename))
+            return render_template('image.html', filename=filename)
     return render_template("index.html")
 
 # Image upload

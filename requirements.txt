@@ -1,3 +1,5 @@
+Flask Dependencies
+
 Flask
 Jinja2
 sqlite3
@@ -9,3 +11,18 @@ flask-SQLAlchemy
 alembic
 Flask-Script
 MarkupSafe
+
+Image Processing Dependencies
+
+numpy 
+scipy 
+matplotlib 
+pil 
+pillow 
+simplecv 
+scikit-learn 
+mahotas 
+ilastik 
+pprocess 
+h5py 
+scikit-image
